@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOT CANDY Corp | Snacks Ácidos & Postres Dulces</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        candyGreen: '#D4E7C5',
+                        candyGreenDark: '#4A7C59',
+                        candyGreenBg: '#EAF3E2',
+                        candyPink: '#FDEBF7',
+                        candyPinkDark: '#884A88',
+                        candyPinkBg: '#FAF0F8',
+                        hotRed: '#DC2626',
+                        hotMagenta: '#BE185D',
+                    },
+                    fontFamily: {
+                        display: ['Fredoka', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafaf9;
+        }
+        h1, h2, h3, h4, .font-brand {
+            font-family: 'Fredoka', cursive;
+        }
+        .bg-acid-gradient {
+            background: linear-gradient(135deg, #EAF3E2 0%, #D4E7C5 100%);
+        }
+        .bg-sweet-gradient {
+            background: linear-gradient(135deg, #FAF0F8 0%, #FDEBF7 100%);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d1d5db;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-pink-300 selection:text-pink-900">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-lime-500 via-pink-500 to-red-500 p-0.5 shadow-md transform group-hover:scale-105 transition-transform duration-300">
+                    <div class="w-full h-full bg-white rounded-[14px] flex items-center justify-center font-brand font-bold text-xl text-red-600">
+                        HC
+                    </div>
+                </div>
+                <div>
+                    <span class="font-brand font-bold text-2xl tracking-wide text-gray-900 block leading-none">
+                        HOT<span class="text-pink-600">CANDY</span> <span class="text-xs text-emerald-600 font-bold">Corp.</span>
+                    </span>
+                    <span class="text-[10px] font-semibold uppercase tracking-widest text-emerald-700 block mt-1">
+                        Ácidos & Dulces
+                    </span>
+                </div>
+            </a>
+
+            <!-- Links de Navegación Desktop -->
+            <nav class="hidden md:flex items-center space-x-8 font-medium text-sm text-gray-700">
+                <a href="#inicio" class="hover:text-red-600 transition-colors">Inicio</a>
+                <a href="#menu-acidos" class="hover:text-emerald-700 transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-pepper-hot text-xs text-emerald-600"></i> Ácidos
+                </a>
+                <a href="#menu-dulces" class="hover:text-pink-600 transition-colors flex items-center gap-1">
+                    <i class="fa-solid fa-cookie-bite text-xs text-pink-500"></i> Dulces
+                </a>
+                <a href="#mision-vision" class="hover:text-red-600 transition-colors">Misión & Visión</a>
+                <a href="#socios" class="hover:text-red-600 transition-colors">Socios & Objetivo</a>
+            </nav>
+
+            <!-- Botones de Acción Header -->
+            <div class="hidden md:flex items-center gap-3">
+                <button onclick="toggleCartModal()" class="relative bg-emerald-100 hover:bg-emerald-200 text-emerald-800 p-2.5 rounded-full transition-colors flex items-center justify-center">
+                    <i class="fa-solid fa-cart-shopping text-lg"></i>
+                    <span id="cart-badge" class="absolute -top-1 -right-1 bg-red-600 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <a href="https://wa.me/593983871602?text=Hola%20HOT%20CANDY,%20me%20gustar%C3%ADa%20hacer%20un%20pedido!" target="_blank" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> 0983871602
+                </a>
+            </div>
+
+            <!-- Botón Menú Móvil -->
+            <div class="flex md:hidden items-center gap-2">
+                <button onclick="toggleCartModal()" class="relative bg-emerald-100 text-emerald-800 p-2 rounded-full">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge-mobile" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center hidden">0</span>
+                </button>
+                <button id="mobile-menu-btn" class="p-2 text-gray-700 hover:text-red-600 focus:outline-none">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Desplegable Móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-gray-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#inicio" onclick="closeMobileMenu()" class="block py-2 text-gray-700 font-medium border-b border-gray-100">Inicio</a>
+            <a href="#menu-acidos" onclick="closeMobileMenu()" class="block py-2 text-emerald-700 font-medium border-b border-gray-100">Menú Ácidos</a>
+            <a href="#menu-dulces" onclick="closeMobileMenu()" class="block py-2 text-pink-600 font-medium border-b border-gray-100">Menú Dulces</a>
+            <a href="#mision-vision" onclick="closeMobileMenu()" class="block py-2 text-gray-700 font-medium border-b border-gray-100">Misión y Visión</a>
+            <a href="#socios" onclick="closeMobileMenu()" class="block py-2 text-gray-700 font-medium">Socios & Objetivo</a>
+            <a href="https://wa.me/593983871602?text=Hola%20HOT%20CANDY,%20me%20gustar%C3%ADa%20hacer%20un%20pedido!" target="_blank" class="w-full bg-green-500 text-white py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow mt-2">
+                <i class="fa-brands fa-whatsapp text-xl"></i> Pedir por WhatsApp (0983871602)
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-b from-emerald-50 via-pink-50 to-amber-50 py-16 md:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Texto Hero -->
+                <div class="text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center gap-2 bg-white/95 backdrop-blur-sm border border-emerald-200 px-4 py-1.5 rounded-full shadow-sm">
+                        <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span class="text-xs font-semibold text-emerald-800 tracking-wide uppercase">¡Experiencia, Sabor y Gestión Empresarial![cite: 1]</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight">
+                        El balance perfecto entre lo <span class="text-emerald-600">Ácido</span>, <span class="text-red-600">Picante</span> y <span class="text-pink-600">Dulce</span>
+                    </h1>
+
+                    <p class="text-lg text-gray-600 max-w-xl mx-auto lg:mx-0">
+                        Disfruta de nuestras Aciditas, Mangonadas, Pizzas crujientes, Paletufos, Batidos de Oreo y Mora, Algodón de Azúcar y Creppes.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#menu-acidos" class="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-emerald-200/50 transition-all flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-pepper-hot"></i> Ver Menú Ácidos
+                        </a>
+                        <a href="#menu-dulces" class="w-full sm:w-auto bg-pink-500 hover:bg-pink-600 text-white font-bold px-8 py-4 rounded-2xl shadow-lg hover:shadow-pink-200/50 transition-all flex items-center justify-center gap-3">
+                            <i class="fa-solid fa-ice-cream"></i> Ver Menú Dulces
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Banner Ilustrativo mostrando los afiches reales -->
+                <div class="relative flex justify-center items-center">
+                    <div class="absolute w-72 h-72 sm:w-96 sm:h-96 bg-gradient-to-tr from-lime-300 to-pink-300 rounded-full filter blur-3xl opacity-50 -z-10 animate-pulse"></div>
+                    
+                    <div class="grid grid-cols-2 gap-4 w-full max-w-lg">
+                        <div class="bg-white p-2 rounded-3xl shadow-xl transform -rotate-3 hover:rotate-0 transition-transform border-2 border-emerald-300">
+                            <img src="WhatsApp Image 2026-10-20 at 15.32.58 (1).jpeg" alt="Menú Ácidos HOT CANDY" class="w-full h-auto rounded-2xl object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x550/D4E7C5/4A7C59?text=Menu+Acidos+1';">
+                        </div>
+                        <div class="bg-white p-2 rounded-3xl shadow-xl transform rotate-3 hover:rotate-0 transition-transform border-2 border-pink-300 mt-6">
+                            <img src="WhatsApp Image 2026-10-20 at 15.32.59 (1).jpeg" alt="Menú Dulce HOT CANDY" class="w-full h-auto rounded-2xl object-cover" onerror="this.onerror=null; this.src='https://placehold.co/400x550/FDEBF7/884A88?text=Menu+Dulce+1';">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- MENÚ SECCIÓN ÁCIDOS -->
+    <section id="menu-acidos" class="py-20 bg-acid-gradient relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-emerald-800/10 text-emerald-900 px-4 py-1.5 rounded-full font-bold text-sm mb-3">
+                    <i class="fa-solid fa-pepper-hot text-red-600"></i> LÍNEA ÁCIDA Y PICANTE
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-emerald-950">HOT CANDY <span class="text-red-600">ÁCIDOS</span></h2>
+                <p class="text-emerald-900/80 mt-3 text-lg">Revisa nuestros menús originales de la línea ácida e interactúa para añadir a tu pedido por WhatsApp.</p>
+            </div>
+
+            <!-- Muestra de los Afiches del Menú Ácido Originales -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white p-4 rounded-3xl shadow-xl border-4 border-emerald-300 text-center">
+                    <h3 class="font-brand text-2xl font-bold text-emerald-800 mb-3">Carta 1: Aciditas y Mangonadas</h3>
+                    <img src="WhatsApp Image 2026-10-20 at 15.32.58 (1).jpeg" alt="Menú HOT CANDY Aciditas y Mangonadas" class="w-full h-auto max-h-[600px] object-contain rounded-2xl mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x800/D4E7C5/4A7C59?text=Menu+Acidos+1';">
+                </div>
+
+                <div class="bg-white p-4 rounded-3xl shadow-xl border-4 border-emerald-300 text-center">
+                    <h3 class="font-brand text-2xl font-bold text-emerald-800 mb-3">Carta 2: Pizza y Paletufos</h3>
+                    <img src="WhatsApp Image 2026-10-20 at 15.32.58.jpeg" alt="Menú HOT CANDY Pizza y Paletufos" class="w-full h-auto max-h-[600px] object-contain rounded-2xl mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x800/D4E7C5/4A7C59?text=Menu+Acidos+2';">
+                </div>
+            </div>
+
+            <!-- Botones Interactivos de Selección de Productos Ácidos -->
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-emerald-200">
+                <h3 class="font-brand text-3xl font-bold text-emerald-950 text-center mb-6">Selecciona tus productos de la línea Ácida</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Aciditas -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider block">Snack Picante</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">ACIDITAS</h4>
+                            <p class="text-xs text-gray-600 mt-1">Pepino, mango o gomitas con chamoy y Tajín.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60 space-y-2">
+                            <button onclick="addToCart('Aciditas (Pequeño)', 1.00)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Pequeño</span>
+                                <span>$1.00 +</span>
+                            </button>
+                            <button onclick="addToCart('Aciditas (Grande)', 1.15)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Grande</span>
+                                <span>$1.15 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Mangonadas -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider block">Nieve Helada</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">MANGONADAS</h4>
+                            <p class="text-xs text-gray-600 mt-1">Nieve de mango con chamoy Tajín y sabores frutales.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60 space-y-2">
+                            <button onclick="addToCart('Mangonada (Pequeña)', 1.00)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Pequeño</span>
+                                <span>$1.00 +</span>
+                            </button>
+                            <button onclick="addToCart('Mangonada (Grande)', 1.50)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-2.5 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Grande</span>
+                                <span>$1.50 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Pizza -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider block">Horneado</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">PIZZA</h4>
+                            <p class="text-xs text-gray-600 mt-1">Crujiente masa con salsa y abundante capa de queso.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60">
+                            <button onclick="addToCart('Pizza Crujiente', 1.25)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Porción</span>
+                                <span>$1.25 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Paletufos -->
+                    <div class="bg-emerald-50 rounded-2xl p-5 border border-emerald-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider block">Especialidad Ácida</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">PALETUFOS</h4>
+                            <p class="text-xs text-gray-600 mt-1">Paleta ácida con toppings crujientes.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-emerald-200/60">
+                            <button onclick="addToCart('Paletufos Normal', 0.70)" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Normal</span>
+                                <span>$0.70 +</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MENÚ SECCIÓN DULCES -->
+    <section id="menu-dulces" class="py-20 bg-sweet-gradient relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 bg-pink-800/10 text-pink-900 px-4 py-1.5 rounded-full font-bold text-sm mb-3">
+                    <i class="fa-solid fa-heart text-pink-600"></i> LÍNEA DULCE Y CREMOSA
+                </div>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-pink-950">HOT CANDY <span class="text-pink-600">DULCE</span></h2>
+                <p class="text-pink-900/80 mt-3 text-lg">Revisa nuestros menús originales de la línea dulce y agrega tus preferidos al pedido.</p>
+            </div>
+
+            <!-- Muestra de los Afiches del Menú Dulce Originales -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="bg-white p-4 rounded-3xl shadow-xl border-4 border-pink-300 text-center">
+                    <h3 class="font-brand text-2xl font-bold text-pink-800 mb-3">Carta 1: Batido Oreo y Algodón</h3>
+                    <img src="WhatsApp Image 2026-10-20 at 15.32.59 (1).jpeg" alt="Menú HOT CANDY Batido Oreo y Algodón" class="w-full h-auto max-h-[600px] object-contain rounded-2xl mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x800/FDEBF7/884A88?text=Menu+Dulces+1';">
+                </div>
+
+                <div class="bg-white p-4 rounded-3xl shadow-xl border-4 border-pink-300 text-center">
+                    <h3 class="font-brand text-2xl font-bold text-pink-800 mb-3">Carta 2: Creppes y Batido de Mora</h3>
+                    <img src="WhatsApp Image 2026-10-20 at 15.32.59.jpeg" alt="Menú HOT CANDY Creppes y Batido Mora" class="w-full h-auto max-h-[600px] object-contain rounded-2xl mx-auto" onerror="this.onerror=null; this.src='https://placehold.co/600x800/FDEBF7/884A88?text=Menu+Dulces+2';">
+                </div>
+            </div>
+
+            <!-- Botones Interactivos de Selección de Productos Dulces -->
+            <div class="bg-white/95 backdrop-blur-md rounded-3xl p-8 shadow-xl border border-pink-200">
+                <h3 class="font-brand text-3xl font-bold text-pink-950 text-center mb-6">Selecciona tus productos de la línea Dulce</h3>
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Batido de Oreo -->
+                    <div class="bg-pink-50 rounded-2xl p-5 border border-pink-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-pink-700 uppercase tracking-wider block">Batido Cremoso</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">BATIDO DE OREO</h4>
+                            <p class="text-xs text-gray-600 mt-1">Mezcla de leche con galletas oreo.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-pink-200/60">
+                            <button onclick="addToCart('Batido de Oreo', 1.25)" class="w-full bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Normal</span>
+                                <span>$1.25 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Algodón de Azúcar -->
+                    <div class="bg-pink-50 rounded-2xl p-5 border border-pink-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-pink-700 uppercase tracking-wider block">Esponjoso</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">ALGODÓN DE AZÚCAR</h4>
+                            <p class="text-xs text-gray-600 mt-1">Nube dulce de diferentes sabores.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-pink-200/60">
+                            <button onclick="addToCart('Algodón de Azúcar', 0.75)" class="w-full bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Normal</span>
+                                <span>$0.75 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Creppes -->
+                    <div class="bg-pink-50 rounded-2xl p-5 border border-pink-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-pink-700 uppercase tracking-wider block">Masa Suave</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">CREPPES</h4>
+                            <p class="text-xs text-gray-600 mt-1">Con toppings dulces a tu elección.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-pink-200/60">
+                            <button onclick="addToCart('Creppes con Toppings', 1.25)" class="w-full bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Normal</span>
+                                <span>$1.25 +</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Batido de Mora -->
+                    <div class="bg-pink-50 rounded-2xl p-5 border border-pink-200 flex flex-col justify-between">
+                        <div>
+                            <span class="text-xs font-bold text-pink-700 uppercase tracking-wider block">Fruta Fresca</span>
+                            <h4 class="font-brand text-xl font-bold text-gray-900 mt-1">BATIDO DE MORA</h4>
+                            <p class="text-xs text-gray-600 mt-1">Mezcla de leche con mora fresca.</p>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-pink-200/60">
+                            <button onclick="addToCart('Batido de Mora', 1.25)" class="w-full bg-pink-600 hover:bg-pink-700 text-white text-xs font-bold py-3 rounded-xl transition-colors flex items-center justify-between px-3">
+                                <span>Normal</span>
+                                <span>$1.25 +</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- MISIÓN Y VISIÓN -->
+    <section id="mision-vision" class="py-20 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-red-600 bg-red-50 px-3 py-1 rounded-full">Nuestra Identidad</span>
+                <h2 class="text-4xl font-extrabold text-gray-900 mt-2">MISIÓN Y VISIÓN</h2>
+                <p class="text-gray-600 mt-2">Conoce el propósito y la proyección empresarial de HOT CANDY.</p>
+            </div>
+
+            <!-- Información oficial de la Misión -->
+            <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl mb-8">
+                <h3 class="font-brand text-2xl font-bold text-pink-600 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye text-pink-500"></i> Misión Corporativa
+                </h3>
+                <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                    Somos una empresa comercial dedicada a la producción y venta de botanas, postres y combinaciones gastronómicas de fusión, gestionada mediante procesos contables y tributarios sistematizados para garantizar la máxima rentabilidad, calidad e innovación operativa en el mercado.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN OBJETIVO EMPRESARIAL Y SOCIOS DE LA EMPRESA -->
+    <section id="socios" class="py-20 bg-stone-100 border-t border-b border-gray-200 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-widest text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full">HOT CANDY Corp.</span>
+                <h2 class="text-4xl sm:text-5xl font-extrabold text-gray-900 mt-2">OBJETIVO CORPORATIVO & SOCIOS</h2>
+                <p class="text-gray-600 mt-3 text-lg">Experiencia, Sabor y Gestión Empresarial de nuestro equipo emprendedor.</p>
+            </div>
+
+            <!-- Información oficial del Objetivo -->
+            <div class="max-w-4xl mx-auto bg-white p-6 sm:p-8 rounded-3xl border border-gray-100 shadow-xl mb-12">
+                <h3 class="font-brand text-2xl font-bold text-emerald-700 mb-3 flex items-center gap-2">
+                    <i class="fa-solid fa-chart-line text-emerald-600"></i> Objetivo del Proyecto
+                </h3>
+                <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
+                    Implementar el modelo de Gestión Integral del emprendimiento Comercial HOTCANDY Corp, mediante la aplicación de procesos contables sistematizados, normativas tributarias vigentes y control administrativo de costos, para evaluar su rentabilidad operativa y viabilidad en el mercado actual.
+                </p>
+            </div>
+
+            <!-- Banner con la Nueva Foto Grupal de Socios -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-gray-200 mb-12">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Nueva Foto de los Socios -->
+                    <div class="lg:col-span-7">
+                        <div class="relative rounded-2xl overflow-hidden shadow-lg border-4 border-emerald-100">
+                            <img src="WhatsApp Image 2026-10-20 at 15.29.54.jpeg" alt="Socios de la Empresa HOT CANDY Corp." class="w-full h-auto max-h-[500px] object-cover rounded-xl" onerror="this.onerror=null; this.src='https://placehold.co/800x600/D4E7C5/4A7C59?text=Socios+de+la+Empresa';">
+                        </div>
+                    </div>
+
+                    <!-- Texto descriptivo del equipo -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-xs font-bold text-pink-600 uppercase tracking-widest">U.E.F. Provincia de Manabí</span>
+                        <h3 class="font-brand text-3xl font-bold text-gray-900">Pasión, Creatividad y Trabajo en Equipo</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed">
+                            Un equipo organizado para ofrecer productos innovadores, deliciosos y gestionados bajo procesos tributarios y contables de máxima excelencia.
+                        </p>
+
+                        <div class="space-y-3 pt-2">
+                            <div class="flex items-center gap-3 p-3 bg-emerald-50 rounded-2xl border border-emerald-100">
+                                <div class="w-10 h-10 bg-emerald-700 text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0">
+                                    <i class="fa-solid fa-calculator"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-sm text-gray-900">Procesos Sistematizados</h5>
+                                    <p class="text-xs text-gray-500">Gestión contable enfocada en rentabilidad.</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center gap-3 p-3 bg-pink-50 rounded-2xl border border-pink-100">
+                                <div class="w-10 h-10 bg-pink-600 text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0">
+                                    <i class="fa-solid fa-utensils"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-bold text-sm text-gray-900">Gastronomía de Fusión</h5>
+                                    <p class="text-xs text-gray-500">Snacks picantes, dulces y bebidas artesanales.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Tarjeta de Contacto Directo WhatsApp -->
+            <div class="bg-gradient-to-r from-emerald-600 to-green-600 rounded-3xl p-8 text-white shadow-xl text-center max-w-3xl mx-auto flex flex-col items-center justify-center space-y-4">
+                <div class="w-16 h-16 bg-white text-green-600 rounded-full flex items-center justify-center text-3xl shadow-inner">
+                    <i class="fa-brands fa-whatsapp"></i>
+                </div>
+                <h3 class="font-brand text-3xl font-bold">¡Haz tu pedido directo!</h3>
+                <p class="text-emerald-100 max-w-lg text-sm">
+                    Atendemos tus pedidos rápidamente por WhatsApp al número directo de HOT CANDY Corp.
+                </p>
+                <a href="https://wa.me/593983871602?text=Hola%20HOT%20CANDY,%20me%20gustar%C3%ADa%20hacer%20un%20pedido!" target="_blank" class="bg-white hover:bg-emerald-50 text-emerald-800 font-extrabold px-8 py-3.5 rounded-full text-lg shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5 flex items-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-2xl text-green-500"></i> WhatsApp: 0983871602
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                
+                <div class="md:col-span-2">
+                    <span class="font-brand text-3xl font-bold text-white block">
+                        HOT<span class="text-pink-500">CANDY</span> Corp.
+                    </span>
+                    <p class="text-sm text-gray-400 mt-3 max-w-sm">
+                        Producción y venta de botanas, postres y combinaciones gastronómicas de fusión.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-white text-sm uppercase tracking-wider mb-3">Menú & Secciones</h5>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#menu-acidos" class="hover:text-emerald-400">Snacks Ácidos</a></li>
+                        <li><a href="#menu-dulces" class="hover:text-pink-400">Postres Dulces</a></li>
+                        <li><a href="#mision-vision" class="hover:text-white">Misión y Visión</a></li>
+                        <li><a href="#socios" class="hover:text-white">Socios & Objetivo</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-bold text-white text-sm uppercase tracking-wider mb-3">Contacto Directo</h5>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <a href="https://wa.me/593983871602" target="_blank" class="flex items-center gap-2 hover:text-green-400"><i class="fa-brands fa-whatsapp text-green-400"></i> WhatsApp: 0983871602</a>
+                        <p class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-red-400"></i> Manabí, Ecuador</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+                <p>&copy; 2026 HOT CANDY Corp. Todos los derechos reservados.</p>
+                <p class="mt-2 sm:mt-0">Empresa Comercial & Gastronómica</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/593983871602?text=Hola%20HOT%20CANDY,%20me%20gustar%C3%ADa%20hacer%20un%20pedido!" 
+       target="_blank" 
+       title="Contactar por WhatsApp" 
+       class="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-gray-900 text-white text-xs font-semibold px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none shadow-md">
+            WhatsApp: 0983871602
+        </span>
+    </a>
+
+    <!-- MODAL DE CARRITO DE PEDIDOS -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex justify-end hidden">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-hidden">
+            <div>
+                <div class="flex items-center justify-between border-b pb-4 mb-4">
+                    <h3 class="font-brand text-2xl font-bold text-gray-900 flex items-center gap-2">
+                        <i class="fa-solid fa-basket-shopping text-emerald-600"></i> Tu Pedido HOT CANDY
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-gray-400 hover:text-gray-700 p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div id="cart-items" class="space-y-3 max-h-[60vh] overflow-y-auto custom-scrollbar pr-1">
+                    <p id="empty-cart-msg" class="text-center text-gray-400 py-12">No has seleccionado ningún producto aún.</p>
+                </div>
+            </div>
+
+            <div class="border-t pt-4 space-y-4">
+                <div class="flex justify-between items-center text-lg font-bold text-gray-900">
+                    <span>Total Estimado:</span>
+                    <span id="cart-total" class="text-red-600">$0.00</span>
+                </div>
+                
+                <button onclick="sendWhatsAppOrder()" class="w-full bg-green-500 hover:bg-green-600 text-white py-3.5 rounded-2xl font-bold flex items-center justify-center gap-2 shadow-lg transition-colors">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Enviar Pedido al 0983871602
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LÓGICA DE INTERACCIÓN Y PEDIDOS -->
+    <script>
+        let cart = [];
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function closeMobileMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+        }
+
+        function changeQuantity(name, delta) {
+            const item = cart.find(i => i.name === name);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.name !== name);
+                }
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const cartBadge = document.getElementById('cart-badge');
+            const cartBadgeMobile = document.getElementById('cart-badge-mobile');
+
+            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+            if (totalCount > 0) {
+                cartBadge.innerText = totalCount;
+                cartBadge.classList.remove('hidden');
+                cartBadgeMobile.innerText = totalCount;
+                cartBadgeMobile.classList.remove('hidden');
+            } else {
+                cartBadge.classList.add('hidden');
+                cartBadgeMobile.classList.add('hidden');
+            }
+
+            cartTotal.innerText = `$${totalPrice.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-center text-gray-400 py-12">No has seleccionado ningún producto aún.</p>';
+                return;
+            }
+
+            cartItemsContainer.innerHTML = cart.map(item => `
+                <div class="flex items-center justify-between bg-stone-50 p-3 rounded-2xl border border-gray-100">
+                    <div>
+                        <div class="font-bold text-sm text-gray-800">${item.name}</div>
+                        <div class="text-xs text-gray-500">$${item.price.toFixed(2)} c/u</div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button onclick="changeQuantity('${item.name}', -1)" class="w-7 h-7 bg-white text-gray-700 rounded-lg shadow-sm font-bold flex items-center justify-center hover:bg-gray-100">-</button>
+                        <span class="text-sm font-bold w-5 text-center">${item.quantity}</span>
+                        <button onclick="changeQuantity('${item.name}', 1)" class="w-7 h-7 bg-emerald-700 text-white rounded-lg shadow-sm font-bold flex items-center justify-center hover:bg-emerald-800">+</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function sendWhatsAppOrder() {
+            if (cart.length === 0) {
+                alert('Por favor selecciona al menos un producto.');
+                return;
+            }
+
+            let message = "¡Hola HOT CANDY Corp.! 🍭 Me gustaría hacer el siguiente pedido:\n\n";
+            cart.forEach(item => {
+                message += `• ${item.quantity}x ${item.name} ($${(item.price * item.quantity).toFixed(2)})\n`;
+            });
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            message += `\n*Total a pagar:* $${total.toFixed(2)}\n\n¿Me confirman disponibilidad? ¡Muchas gracias!`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/593983871602?text=${encodedMessage}`, '_blank');
+        }
+    </script>
+</body>
+</html>
